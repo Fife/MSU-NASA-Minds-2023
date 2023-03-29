@@ -5,7 +5,7 @@ require ('CooperativeMapping')
 
 Home_coord = {-1.6, -1.6}
 NumberOfBots = 3
-FieldSize = 3
+FieldSize = 10
 Center = {0,0}
 AgentMap = {}
 AgentState= {}
