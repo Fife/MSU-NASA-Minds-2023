@@ -1,7 +1,7 @@
 clear
 clc
-length = 18;
-display = false;
+length = 9;
+display = true;
 radius = 0.25;
 
 %% Time vs Number of Bots, Number of Chunks Constant: Checkerboard vs. Comb
@@ -10,14 +10,14 @@ chunkSize = 4;
 i = 1;
 
 %Run Simulations 
-for numBots = 3:2:15
-    comb{i} = CombingPattern(length, numBots, radius, display);
+for numBots = 3:2:5
+    %comb{i} = CombingPattern(length, numBots, radius, display);
     checker{i} = CheckerboardPattern(length, numBots, radius, chunkSize, display);
     i = i+1;
 end
 
 %Process Data
-numBots = 3:2:15;
+numBots = 3:2:5;
 for j =1:i-1
     checkerTime(j) = cell2mat(checker{j}(1));
     combTime(j) = cell2mat(comb{j}(1));

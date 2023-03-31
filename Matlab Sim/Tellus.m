@@ -12,11 +12,11 @@ classdef Tellus
         current_coord = []
         path = []
         
-        scanRate = 1/30;
+        scanRate = 1/20;
         velocity = 1;
         pathIndex = 1
         data = [];
-
+        granularity = 4;
         chunkLen
         offset = 0;
         radius= 0.1;
@@ -43,7 +43,7 @@ classdef Tellus
             obj.fieldStatus(obj.fieldIndex) = true; 
             %Insert Starting Point into path 
             %Append Path with Generate Path call 
-            obj.path = [obj.path, GeneratePath(startPoints(obj.fieldIndex), chunkLen-(2*obj.radius), (2*obj.radius), obj.offset)];
+            obj.path = [obj.path, GeneratePath(startPoints(obj.fieldIndex), chunkLen-(obj.radius), (chunkLen-(obj.radius))/obj.granularity, obj.offset)];
             
             fieldStatus = obj.fieldStatus; 
         end
@@ -87,7 +87,7 @@ classdef Tellus
 
 
                     %Generate Path and Reset Index
-                    obj.path = [GeneratePath(obj.startingPoints(obj.fieldIndex), obj.chunkLen-(2*obj.radius)-obj.offset, (2*obj.radius), obj.offset)];
+                    obj.path = [GeneratePath(obj.startingPoints(obj.fieldIndex), obj.chunkLen-(obj.radius)-obj.offset, (obj.chunkLen-(obj.radius))/obj.granularity, obj.offset)];
                     obj.pathIndex = 1;
                 end
             end
@@ -122,7 +122,7 @@ classdef Tellus
             obj.combingPos = combingPos;
 
             %Append Path with Generate Path call 
-            centerPath = GeneratePath({startCoord}, chunkLength-(numBots*obj.radius), (numBots*2*obj.radius), numBots*radius);
+            centerPath = GeneratePath({startCoord}, chunkLength-(obj.numBots*obj.radius), (obj.chunkLen-(2*obj.radius))/obj.granularity, numBots*radius);
             if combingPos == 1
                 obj.path = centerPath;
             else

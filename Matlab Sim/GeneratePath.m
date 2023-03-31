@@ -3,7 +3,7 @@ function travel_path = GeneratePath(bottom_left, length, width, offset)
     x = bottom_left(1)+offset;
     y = bottom_left(2)+offset;
     travel_path = [x, y];
-    for i = 1:(length/(2*width))+1
+    for i = 1:(length/(2*width))
         x = x + length;
         travel_path = [travel_path, [x, y]];
         y = y + width;
@@ -16,7 +16,7 @@ function travel_path = GeneratePath(bottom_left, length, width, offset)
 	x = x + length;
 	travel_path = [travel_path, [x, y]];
 
-    for i = 1:(length/(2*width)) +1 
+    for i = 1:(length/(2*width))
      	y = y - length;
  		travel_path = [travel_path, [x, y]];
  		x = x - width;
