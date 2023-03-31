@@ -50,7 +50,7 @@ function getYaw()
 	return yaw
 end
 
-function driveTo(x,y, forward_velocity)
+function DriveTo(x,y, forward_velocity)
 	local isTurning
 	--get x and y of robot
 	local current_x= robot.positioning.position.x
